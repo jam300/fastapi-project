@@ -86,7 +86,7 @@ app/
 ---
 
 ## 🔜 Coming Soon
-
+- Add Respositories and services layers
 - JWT Authentication
 - Role-based Permissions
 - Unit & Integration Testing
