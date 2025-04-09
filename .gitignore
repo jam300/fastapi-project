@@ -1,0 +1,21 @@
+# Entorno virtual
+env/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Variables de entorno
+.env
+
+# VSCode (opcional)
+.vscode/
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
