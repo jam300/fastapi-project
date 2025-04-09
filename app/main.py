@@ -1,12 +1,12 @@
 from fastapi import FastAPI
-from app.routers import user_router
+from app.routers import user_router, post_router
 
 
 app = FastAPI()
 
 app.include_router(user_router.router)
+app.include_router(post_router.router)
 
-print("✅ main.py loaded desde app.main")
 
 @app.get("/")
 async def roo():

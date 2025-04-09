@@ -1,33 +1,33 @@
 from typing import Annotated
 from pydantic import BaseModel, Field
-from typer import Optional
+from typing import Optional
 from datetime import datetime
 
 from app.schemas.user_schema import UserResponse
 
-class PostBase(BaseModel):
+class _PostBase(BaseModel):
     title: str
     content: str
     published: bool = True
 
-class PostCreate(PostBase):
+class PostCreate(_PostBase):
     pass
 
-class PostResponse(PostBase):
+class PostResponse(_PostBase):
     id: int
     created_at: datetime
     owner_id: int
     owner: UserResponse
 
     class Config:
-        orm_mode =True
+        from_attributes = True
 
 class PostVote(BaseModel):
     Post: PostResponse
     Votes: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Vote(BaseModel):
     post_id: int

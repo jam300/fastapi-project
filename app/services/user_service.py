@@ -3,10 +3,11 @@ from fastapi import HTTPException, status
 
 from app.schemas.user_schema import UserCreate
 from app.repositories import user_repository
+from app.models.user_model import User
 from app.utils import hashing
 
 
-def get_user_by_id(user_id: int, db: Session):
+def get_user_by_id(user_id: int, db: Session) -> User | None:
     user = user_repository.get_user_by_id(db, user_id)
     if not user:
         raise HTTPException(
@@ -16,10 +17,10 @@ def get_user_by_id(user_id: int, db: Session):
     return user
 
 
-def get_all_users(db: Session):
+def get_all_users(db: Session) -> list[User]:
     return user_repository.get_all_users(db)
 
-def register_user(user_data: UserCreate, db: Session):
+def register_user(user_data: UserCreate, db: Session) -> User | None:
     # Check if the user already exists
     existing_user = user_repository.get_user_by_email(db, user_data.email)
     if existing_user:

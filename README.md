@@ -80,13 +80,11 @@ app/
 ## 📡 Endpoints
 
 - `/` — Health check
-- `/check-db` — Verifies connection with SQL Server
 - 🔐 Auth & CRUD endpoints coming soon...
 
 ---
 
 ## 🔜 Coming Soon
-- Add Respositories and services layers
 - JWT Authentication
 - Role-based Permissions
 - Unit & Integration Testing
