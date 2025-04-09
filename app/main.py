@@ -1,17 +1,14 @@
 from fastapi import FastAPI
-from sqlalchemy.exc import SQLAlchemyError
-from app.database import engine
+from app.routers import user_router
+
 
 app = FastAPI()
 
-@app.get("/check-db")
-def check_db_connection():
-    try:
-        with engine.connect() as conn:
-            return {"status": "✅ Conexión exitosa a SQL Server"}
-    except SQLAlchemyError as e:
-        return {"error": str(e)}
+app.include_router(user_router.router)
+
+print("✅ main.py loaded desde app.main")
 
 @app.get("/")
 async def roo():
     return {"mesagge": "¡Hola soy tu FastApi funcionando correctamente!"}
+

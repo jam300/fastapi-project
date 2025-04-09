@@ -1,6 +1,6 @@
 # 🚀 FastAPI SQL Server Project
 
-Backend project built with **FastAPI** in Python, using a clean modular architecture and connected to **SQL Server**.  
+Backend project built with **FastAPI** in Python, using a clean modular architecture and connected to **SQL Server**.
 Designed to be maintainable, scalable, and ready for production.
 
 ---
@@ -79,8 +79,8 @@ app/
 
 ## 📡 Endpoints
 
-- `/` — Health check  
-- `/check-db` — Verifies connection with SQL Server  
+- `/` — Health check
+- `/check-db` — Verifies connection with SQL Server
 - 🔐 Auth & CRUD endpoints coming soon...
 
 ---
@@ -96,7 +96,7 @@ app/
 
 ## 👨‍💻 Author
 
-> Built with ❤️ by **Javier Méndez** aka _jam300_  
+> Built with ❤️ by **Javier Méndez** aka _jam300_
 > [GitHub](https://github.com/jam300) — [LinkedIn](https://www.linkedin.com/in/javieradanmendezmendez/)
 
 ---
