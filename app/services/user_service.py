@@ -7,8 +7,8 @@ from app.models.user_model import User
 from app.utils import hashing
 
 
-def get_user_by_id(user_id: int, db: Session) -> User | None:
-    user = user_repository.get_user_by_id(db, user_id)
+def get_user_by_id(user_uuid: str, db: Session) -> User | None:
+    user = user_repository.get_user_by_id(db, user_uuid)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -34,3 +34,12 @@ def register_user(user_data: UserCreate, db: Session) -> User | None:
 
     # Create and return the user
     return user_repository.create_user(db, user_data)
+
+def delete_user(user_uuid: str, db: Session) -> None:
+    user = user_repository.get_user_by_id( db, user_uuid)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found."
+        )
+    user_repository.delete_user(user, db)

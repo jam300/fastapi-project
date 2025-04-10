@@ -1,5 +1,5 @@
 from typing import Annotated
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 from datetime import datetime
 
@@ -13,22 +13,27 @@ class _PostBase(BaseModel):
 class PostCreate(_PostBase):
     pass
 
+class PostUpdate(BaseModel):
+    title: Optional[str] = None
+    content: Optional[str] = None
+    published: Optional[bool] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
 class PostResponse(_PostBase):
-    id: int
+    uuid: str
     created_at: datetime
-    owner_id: int
+    owner_uuid: str
     owner: UserResponse
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
-class PostVote(BaseModel):
+class PostVoteResponse(BaseModel):
     Post: PostResponse
     Votes: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
-class Vote(BaseModel):
-    post_id: int
+class VoteCreate(BaseModel):
+    post_uuid: str
     dir: Annotated[int, Field(le=1)]

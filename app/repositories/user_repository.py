@@ -6,8 +6,11 @@ from app.schemas.user_schema import UserCreate
 def get_user_by_email(db: Session, email: str) -> User | None:
     return db.query(User).filter(User.email == email).first()
 
-def get_user_by_id(db: Session, user_id: int) -> User | None:
-    return db.query(User).filter(User.id == user_id).first()
+def get_user_by_id(db: Session, user_uuid: str) -> User | None:
+    return db.query(User).filter(User.uuid == user_uuid).first()
+
+def get_user_by_email(db: Session, email: str,):
+    return db.query(User).filter(User.email == email).first()
 
 def get_all_users(db: Session) -> list[User]:
     return db.query(User).all()
@@ -19,4 +22,7 @@ def create_user(db: Session, user_data: UserCreate) -> User:
     db.refresh(new_user)
     return new_user
 
+def delete_user(user: User, db: Session) -> None:
+    db.delete(user)
+    db.commit()
 
